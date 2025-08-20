@@ -8,7 +8,7 @@ export default function DataTable() {
   const [editData, setEditData] = useState({ name: "", mobile: "", dob: "" });
 
   const fetchData = async () => {
-    const res = await axios.get("http://localhost:4000/api/getdata");
+    const res = await axios.get("http://localhost:5000/api/getdata");
     setUsers(res.data);
   };
 
@@ -22,7 +22,7 @@ export default function DataTable() {
   };
 
   const handleDelete = async (id) => {
-    await axios.post("http://localhost:4000/api/postdata", { action: "delete", id });
+    await axios.post("http://localhost:5000/api/postdata", { action: "delete", id });
     fetchData();
   };
 
@@ -36,7 +36,7 @@ export default function DataTable() {
   };
 
   const handleUpdate = async () => {
-    await axios.post("http://localhost:4000/api/postdata", {
+    await axios.post("http://localhost:5000/api/postdata", {
       action: "edit",
       id: editId,
       ...editData
